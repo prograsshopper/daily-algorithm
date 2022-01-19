@@ -32,3 +32,27 @@ class Solution:
                 j += 1
         return flag
 
+# sol 3: use deque, faster than 60.52%
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        from collections import deque
+        str_deque = deque(s)
+        result = True
+        while len(str_deque) > 0:
+            try:
+                left = str_deque.popleft()
+                while not left.isalnum():
+                    left = str_deque.popleft()
+                right = str_deque.pop()
+                while not right.isalnum():
+                    right = str_deque.pop()
+                if left.lower() != right.lower():
+                    result = False
+                    break
+            except Exception as e:
+                break
+        return result
+
+# sol 4 regex (추후에 풀어볼것)
+
+
